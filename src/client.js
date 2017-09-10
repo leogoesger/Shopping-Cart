@@ -13,7 +13,7 @@ import {addToCart} from './actions/cartActions';
 import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 
 //create store
-const middleware = applyMiddleware(thunk, logger());
+const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware);
 
 

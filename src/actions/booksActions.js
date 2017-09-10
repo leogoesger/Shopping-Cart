@@ -2,8 +2,14 @@
 import axios from 'axios';
 
 export function getBooks(){
-  return {
-    type: "GET_BOOKS"
+  return function(dispatch){
+    //only dispatch once AXIOS has been POSTED with Thunk
+    axios.get("/api/books").then(function(response){
+      dispatch({type: "GET_BOOKS", payload:response.data})
+    })
+    .catch(function(err){
+      dispatach({type:"GET_BOOK_REJECTED", payload: err})
+    })
   }
 }
 
@@ -11,20 +17,25 @@ export function getBooks(){
 export function postBooks(book){
   return function(dispatch){
     //only dispatch once AXIOS has been POSTED with Thunk
-    axios.post("/books", book).then(function(response){
+    axios.post("/api/books", book).then(function(response){
       dispatch({type: "POST_BOOK", payload:response.data})
     })
     .catch(function(err){
-      dispatach({type:"POST_BOOK_REJECTED", payload:"there was an error posting"})
+      dispatach({type:"POST_BOOK_REJECTED", payload:"there was an error POST"})
     })
   }
 }
 
 // DELETE A book
 export function deleteBooks(id){
-  return {
-    type: "DELETE_BOOK",
-    payload: id
+  return function(dispatch){
+    //only dispatch once AXIOS has been POSTED with Thunk
+    axios.delete("/api/books/"+ id).then(function(response){
+      dispatch({type: "DELETE_BOOK", payload:id})
+    })
+    .catch(function(err){
+      dispatach({type:"DELETE_BOOK_REJECTED", payload:err})
+    })
   }
 }
 
