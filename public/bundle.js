@@ -39763,7 +39763,7 @@ var BooksList = function (_React$Component) {
             _react2.default.createElement(
               _reactBootstrap.Carousel.Item,
               null,
-              _react2.default.createElement('img', { width: 900, height: 500, alt: '900x500', src: '/images/11.jpg' }),
+              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/11.jpg' }),
               _react2.default.createElement(
                 _reactBootstrap.Carousel.Caption,
                 null,
@@ -39782,7 +39782,7 @@ var BooksList = function (_React$Component) {
             _react2.default.createElement(
               _reactBootstrap.Carousel.Item,
               null,
-              _react2.default.createElement('img', { width: 900, height: 500, alt: '900x500', src: '/images/22.jpg' }),
+              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/12.jpg' }),
               _react2.default.createElement(
                 _reactBootstrap.Carousel.Caption,
                 null,
@@ -50865,6 +50865,11 @@ var BookItem = function (_React$Component) {
   }
 
   _createClass(BookItem, [{
+    key: 'onReadMore',
+    value: function onReadMore() {
+      this.setState({ isClicked: true });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -50889,7 +50894,12 @@ var BookItem = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              this.props.description
+              this.props.description.length > 50 && this.state.isClicked === false ? this.props.description.substring(0, 50) : this.props.description,
+              _react2.default.createElement(
+                'button',
+                { className: 'link', onClick: this.onReadMore.bind(this) },
+                this.state.isClicked === false && this.props.description !== null && this.props.description.length > 50 ? ' ...read more' : ''
+              )
             ),
             _react2.default.createElement(
               'h6',
