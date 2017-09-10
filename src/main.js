@@ -2,10 +2,16 @@
 import React from 'react';
 import Menu from './components/menu';
 import Footer from './components/footer';
+import {bindActionCreators} from 'redux';
+import {getCart} from '../src/actions/cartActions'
 
 import {connect} from 'react-redux';
 
 class Main extends React.Component{
+  componentDidMount(){
+    //Dispatch an action
+    this.props.getCart();
+  }
   render(){
     return(
       <div>
@@ -21,4 +27,9 @@ function mapStateToProps(state){
     totalQty: state.cart.totalQty
   }
 }
-export default connect(mapStateToProps)(Main);
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    getCart: getCart
+  }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

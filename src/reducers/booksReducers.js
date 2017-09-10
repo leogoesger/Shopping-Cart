@@ -12,7 +12,15 @@ export function booksReducers(state={
     case "POST_BOOK":
       // let books = state.books.concat(action.payload);
       // return {books};
-      return {books:[...state.books, ...action.payload]}
+      return {...state, books:[...state.books, ...action.payload], msg:'Saved! Click to Continue', style: 'success', validation: 'success'}
+      break;
+    case "POST_BOOK_REJECTED":
+      // let books = state.books.concat(action.payload);
+      // return {books};
+      return {...state, msg:'Please Try Again!', style:'danger', validation: 'error'}
+      break;
+    case "RESET_BUTTON":
+      return {...state, msg:null, style:'primary', validation: null}
       break;
 
     case "DELETE_BOOK":
