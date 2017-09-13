@@ -39678,9 +39678,9 @@ var _reactDom = __webpack_require__(21);
 
 var _reactRouter = __webpack_require__(194);
 
-var _bookslist = __webpack_require__(434);
+var _booksList = __webpack_require__(576);
 
-var _bookslist2 = _interopRequireDefault(_bookslist);
+var _booksList2 = _interopRequireDefault(_booksList);
 
 var _carts = __webpack_require__(258);
 
@@ -39702,165 +39702,14 @@ var routes = _react2.default.createElement(
   _react2.default.createElement(
     _reactRouter.Route,
     { path: '/', component: _main2.default },
-    _react2.default.createElement(_reactRouter.IndexRoute, { component: _bookslist2.default }),
+    _react2.default.createElement(_reactRouter.IndexRoute, { component: _booksList2.default }),
     _react2.default.createElement(_reactRouter.Route, { path: '/admin', component: _booksForm2.default }),
     _react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _carts2.default })
   )
 );exports.default = routes;
 
 /***/ }),
-/* 434 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(49);
-
-var _redux = __webpack_require__(34);
-
-var _booksActions = __webpack_require__(125);
-
-var _reactBootstrap = __webpack_require__(65);
-
-var _bookItem = __webpack_require__(572);
-
-var _bookItem2 = _interopRequireDefault(_bookItem);
-
-var _booksForm = __webpack_require__(257);
-
-var _booksForm2 = _interopRequireDefault(_booksForm);
-
-var _carts = __webpack_require__(258);
-
-var _carts2 = _interopRequireDefault(_carts);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BooksList = function (_React$Component) {
-  _inherits(BooksList, _React$Component);
-
-  function BooksList() {
-    _classCallCheck(this, BooksList);
-
-    return _possibleConstructorReturn(this, (BooksList.__proto__ || Object.getPrototypeOf(BooksList)).apply(this, arguments));
-  }
-
-  _createClass(BooksList, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      //Dispatch an action
-      this.props.getBooks();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var booksList = this.props.books.map(function (booksArr) {
-        return _react2.default.createElement(
-          _reactBootstrap.Col,
-          { xs: 12, sm: 6, md: 4, key: booksArr._id },
-          _react2.default.createElement(_bookItem2.default, { _id: booksArr._id,
-            title: booksArr.title,
-            description: booksArr.description,
-            images: booksArr.images,
-            price: booksArr.price })
-        );
-      });
-      return _react2.default.createElement(
-        _reactBootstrap.Grid,
-        null,
-        _react2.default.createElement(
-          _reactBootstrap.Row,
-          null,
-          _react2.default.createElement(
-            _reactBootstrap.Carousel,
-            null,
-            _react2.default.createElement(
-              _reactBootstrap.Carousel.Item,
-              null,
-              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/11.jpg' }),
-              _react2.default.createElement(
-                _reactBootstrap.Carousel.Caption,
-                null,
-                _react2.default.createElement(
-                  'h3',
-                  null,
-                  'Second slide label'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Carousel.Item,
-              null,
-              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/12.jpg' }),
-              _react2.default.createElement(
-                _reactBootstrap.Carousel.Caption,
-                null,
-                _react2.default.createElement(
-                  'h3',
-                  null,
-                  'Third slide label'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Row,
-          { style: { marginTop: '15px' } },
-          _react2.default.createElement(_carts2.default, null)
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Row,
-          null,
-          booksList
-        )
-      );
-    }
-  }]);
-
-  return BooksList;
-}(_react2.default.Component);
-
-function mapStateToProps(state) {
-  return {
-    books: state.books.books
-  };
-}
-function mapDispatchToProps(dispatch) {
-  return (0, _redux.bindActionCreators)({
-    getBooks: _booksActions.getBooks
-  }, dispatch);
-}
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BooksList);
-
-/***/ }),
+/* 434 */,
 /* 435 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -51206,6 +51055,158 @@ var Footer = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Footer;
+
+/***/ }),
+/* 576 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(49);
+
+var _redux = __webpack_require__(34);
+
+var _booksActions = __webpack_require__(125);
+
+var _reactBootstrap = __webpack_require__(65);
+
+var _bookItem = __webpack_require__(572);
+
+var _bookItem2 = _interopRequireDefault(_bookItem);
+
+var _booksForm = __webpack_require__(257);
+
+var _booksForm2 = _interopRequireDefault(_booksForm);
+
+var _carts = __webpack_require__(258);
+
+var _carts2 = _interopRequireDefault(_carts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BooksList = function (_React$Component) {
+  _inherits(BooksList, _React$Component);
+
+  function BooksList() {
+    _classCallCheck(this, BooksList);
+
+    return _possibleConstructorReturn(this, (BooksList.__proto__ || Object.getPrototypeOf(BooksList)).apply(this, arguments));
+  }
+
+  _createClass(BooksList, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      //Dispatch an action
+      this.props.getBooks();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var booksList = this.props.books.map(function (booksArr) {
+        return _react2.default.createElement(
+          _reactBootstrap.Col,
+          { xs: 12, sm: 6, md: 4, key: booksArr._id },
+          _react2.default.createElement(_bookItem2.default, { _id: booksArr._id,
+            title: booksArr.title,
+            description: booksArr.description,
+            images: booksArr.images,
+            price: booksArr.price })
+        );
+      });
+      return _react2.default.createElement(
+        _reactBootstrap.Grid,
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Carousel,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Carousel.Item,
+              null,
+              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/11.jpg' }),
+              _react2.default.createElement(
+                _reactBootstrap.Carousel.Caption,
+                null,
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Second slide label'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Carousel.Item,
+              null,
+              _react2.default.createElement('img', { width: 900, height: 500, alt: '700x500', src: '/images/12.jpg' }),
+              _react2.default.createElement(
+                _reactBootstrap.Carousel.Caption,
+                null,
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Third slide label'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          { style: { marginTop: '15px' } },
+          _react2.default.createElement(_carts2.default, null)
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          null,
+          booksList
+        )
+      );
+    }
+  }]);
+
+  return BooksList;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+  return {
+    books: state.books.books
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    getBooks: _booksActions.getBooks
+  }, dispatch);
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BooksList);
 
 /***/ })
 /******/ ]);

@@ -4,7 +4,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
-import BooksList from './components/pages/bookslist';
+import BooksList from './components/pages/booksList';
 import Cart from './components/pages/carts';
 import BooksForm from './components/pages/booksForm';
 import Main from './main';
