@@ -14,23 +14,15 @@ import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 
 //create store
 const middleware = applyMiddleware(thunk, logger);
-const store = createStore(reducers, middleware);
 
+//PASS INITIAL STATE FROM SERVER STORE
+const initialState = window.INITIAL_STATE
+const store = createStore(reducers, initialState, middleware);
 
-import BooksList from './components/pages/bookslist';
-import Cart from './components/pages/carts';
-import BooksForm from './components/pages/booksForm';
-import Main from './main';
-
+import routes from './routes'
 const Routes = (
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={Main}>
-        <IndexRoute component={BooksList}/>
-        <Route path="/admin" component={BooksForm}/>
-        <Route path="/cart" component={Cart}/>
-      </Route>
-    </Router>
+    {routes}
   </Provider>
 )
 render(

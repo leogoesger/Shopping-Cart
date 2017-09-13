@@ -3,6 +3,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const cartController = require("./controllers/cartController");
 
 var app = express();
 
@@ -24,25 +25,9 @@ app.use(session({
   cookie: {maxAge: 1000 * 60 * 60 * 24 *2}, // 2 days in milli seconds
   store: new MongoStore({mongooseConnection: db, ttl: 2 * 24 * 60 * 60})
 }))
-// SAVE SESSION CART API
-app.post('/cart', function(req, res){
-  var cart = req.body;
-  req.session.cart = cart;
-  req.session.save(function(err){
-    if(err){
-      throw err;
-    }
-    res.json(req.session.cart)
-  })
-})
 
-// GET SESSION CART API
-app.get('/cart', function(req, res){
-  if (typeof req.session.cart !== 'undefined'){
-    res.json(req.session.cart);
-  }
-})
-// --->>> end session set up <<<----
+app.post('/cart', cartController.cartCreate) // SAVE SESSION CART API
+app.get('/cart', cartController.getCart) // GET SESSION CART API
 
 var Books = require('./models/books.js')
 
