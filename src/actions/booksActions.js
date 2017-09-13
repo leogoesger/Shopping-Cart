@@ -8,7 +8,7 @@ export function getBooks(){
       dispatch({type: "GET_BOOKS", payload:response.data})
     })
     .catch(function(err){
-      dispatach({type:"GET_BOOK_REJECTED", payload: err})
+      dispatch({type:"GET_BOOK_REJECTED", payload: err})
     })
   }
 }
@@ -21,7 +21,7 @@ export function postBooks(book){
       dispatch({type: "POST_BOOK", payload:response.data})
     })
     .catch(function(err){
-      dispatach({type:"POST_BOOK_REJECTED", payload:"there was an error POST"})
+      dispatch({type:"POST_BOOK_REJECTED", payload:"there was an error POST"})
     })
   }
 }
@@ -34,7 +34,7 @@ export function deleteBooks(id){
       dispatch({type: "DELETE_BOOK", payload:id})
     })
     .catch(function(err){
-      dispatach({type:"DELETE_BOOK_REJECTED", payload:err})
+      dispatch({type:"DELETE_BOOK_REJECTED", payload:err})
     })
   }
 }

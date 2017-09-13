@@ -11243,7 +11243,7 @@ function getBooks() {
     _axios2.default.get("/api/books").then(function (response) {
       dispatch({ type: "GET_BOOKS", payload: response.data });
     }).catch(function (err) {
-      dispatach({ type: "GET_BOOK_REJECTED", payload: err });
+      dispatch({ type: "GET_BOOK_REJECTED", payload: err });
     });
   };
 }
@@ -11255,7 +11255,7 @@ function postBooks(book) {
     _axios2.default.post("/api/books", book).then(function (response) {
       dispatch({ type: "POST_BOOK", payload: response.data });
     }).catch(function (err) {
-      dispatach({ type: "POST_BOOK_REJECTED", payload: "there was an error POST" });
+      dispatch({ type: "POST_BOOK_REJECTED", payload: "there was an error POST" });
     });
   };
 }
@@ -11267,7 +11267,7 @@ function deleteBooks(id) {
     _axios2.default.delete("/api/books/" + id).then(function (response) {
       dispatch({ type: "DELETE_BOOK", payload: id });
     }).catch(function (err) {
-      dispatach({ type: "DELETE_BOOK_REJECTED", payload: err });
+      dispatch({ type: "DELETE_BOOK_REJECTED", payload: err });
     });
   };
 }

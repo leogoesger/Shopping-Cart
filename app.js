@@ -6,12 +6,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-//PROXY
-var httpProxy = require('http-proxy');
-
-//REQUEST HANDLER FOR SERVER SIDE RENDERING
-var requestHandler = require('./requestHandler')
-
+var httpProxy = require('http-proxy'); //PROXY
+var requestHandler = require('./requestHandler') //REQUEST HANDLER FOR SERVER SIDE RENDERING
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -29,8 +25,8 @@ app.use('/api', function(req, res){
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Universal App
 app.set('view engine', 'ejs');
-
 app.use(requestHandler);
 
 // catch 404 and forward to error handler
