@@ -12,4 +12,7 @@ Go into the mongo bin directory
 nodemon:
 nodemon
 
+brew install awsebcli
+this would be for aws service
+
 This could serve as a boilerplate for all Redux projects.
