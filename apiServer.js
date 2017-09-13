@@ -3,7 +3,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const cartController = require("./controllers/cartController");
+
+//import Controller
+const cartController = require('./controllers/cartController');
+const booksController = require('./controllers/booksController');
+
 
 var app = express();
 
@@ -26,83 +30,15 @@ app.use(session({
   store: new MongoStore({mongooseConnection: db, ttl: 2 * 24 * 60 * 60})
 }))
 
-app.post('/cart', cartController.cartCreate) // SAVE SESSION CART API
-app.get('/cart', cartController.getCart) // GET SESSION CART API
+//SESSION for Cart
+app.post('/cart', cartController.cartCreate); // SAVE SESSION CART API
+app.get('/cart', cartController.getCart); // GET SESSION CART API
 
-var Books = require('./models/books.js')
-
-// ------>>>>>POST BOOKS<<<<<-------
-app.post('/books', function(req, res){
-  var book = req.body;
-
-  Books.create(book, function(err,books){
-    if(err){
-      throw err;
-    }
-    res.json(books);
-  })
-});
-// END
-
-// ------>>>>>GET BOOKS<<<<<-------
-app.get('/books', function(req, res){
-  Books.find(function(err,books){
-    if(err){
-      throw err;
-    }
-    res.json(books);
-  })
-})
-// END
-
-// ------>>>>>DELETE BOOKS<<<<<-------
-app.delete('/books/:_id', function(req, res){
-  var query = {_id: req.params._id}
-  Books.remove(query, function(err,books){
-    if(err){
-      console.log("Error");
-    }
-    res.json(books);
-  })
-})
-// END
-
-// ------>>>>>UPDATE BOOKS<<<<<-------
-app.put('/books/:_id', function(req, res){
-  var book = req.body;
-  var query = {_id: req.params._id};
-  var update = {
-    '$set':{
-      title:book.title,
-      description:book.description,
-      image:book.image,
-      price:book.price
-    }
-  };
-  var options = {new: true}
-  Books.findOneAndUpdate(query, update, options, function(err,books){
-    if(err){
-      throw err;
-    }
-    res.json(books);
-  })
-})
-// END
-
-app.get('/images', function(req,res){
-  const imgFolder = __dirname + '/public/images/';
-  const fs = require('fs');
-  fs.readdir(imgFolder, function(err, files){
-    if(err){
-      return console.error(err)
-    }
-    const filesArr = [];
-    files.forEach(function(file){
-      filesArr.push({name: file})
-    })
-    res.json(filesArr);
-  })
-})
+app.post('/books', booksController.postBook); //Post Book
+app.get('/books', booksController.getBooks); //Get Books
+app.delete('/books/:_id', booksController.deleteBook); //Delete Book
+app.put('/books/:_id', booksController.updateBook); //Update Book
+app.get('/images', booksController.getImage); //Get Book's Image
 
 app.listen(3001, function(err){
   if(err){
