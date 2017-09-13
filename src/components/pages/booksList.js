@@ -7,7 +7,7 @@ import {Carousel, Grid, Col, Row, Button} from 'react-bootstrap';
 
 import BookItem from './bookItem';
 import BooksForm from './booksForm';
-import Cart from './carts';
+import Cart from './cart';
 
 class BooksList extends React.Component{
   componentDidMount(){

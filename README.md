@@ -1,5 +1,5 @@
 # Shopping-Cart
-Shopping cart created using React/Redux Express and Nodejs with Thunk Axios
+Shopping Cart is a Universal/Isomorphic app built with React with Redux, NodeJs, Express, and MongoDB. The app is deployed AWS using Elastic Beanstalk.
 
 
 webpack:
@@ -15,4 +15,9 @@ nodemon
 brew install awsebcli
 this would be for aws service
 
-This could serve as a boilerplate for all Redux projects.
+open in Heroku
+heroku open
+
+eb init
+eb create Name
+eb open
