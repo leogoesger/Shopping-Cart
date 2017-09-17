@@ -33,14 +33,14 @@ class BooksList extends React.Component{
             <Carousel.Item>
               <img width={900} height={500} alt="700x500" src="/images/home1.jpg"/>
               <Carousel.Caption>
-                <h3>Second slide label</h3>
+                <h3>Purchase Books</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img width={900} height={500} alt="700x500" src="/images/home2.jpg"/>
               <Carousel.Caption>
-                <h3>Third slide label</h3>
+                <h3>Add New Books</h3>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
               </Carousel.Caption>
             </Carousel.Item>

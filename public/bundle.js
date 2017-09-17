@@ -39801,7 +39801,7 @@ var BooksList = function (_React$Component) {
                 _react2.default.createElement(
                   'h3',
                   null,
-                  'Second slide label'
+                  'Purchase Books'
                 ),
                 _react2.default.createElement(
                   'p',
@@ -39820,7 +39820,7 @@ var BooksList = function (_React$Component) {
                 _react2.default.createElement(
                   'h3',
                   null,
-                  'Third slide label'
+                  'Add New Books'
                 ),
                 _react2.default.createElement(
                   'p',
